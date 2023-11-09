@@ -1,0 +1,17 @@
+
+{% block title %}Search{% endblock title %}
+{% block content %}
+<h1>Работы Ferum</h1>
+{% for book in gallery_list %}
+<div>
+    {% if book.cover %}
+    <img class="bookcover" src="{{ book.cover.url}}" width="300px" >
+    {% endif %}
+    <p>Author: {{ book.author }}</p>
+    <p>Price: $ {{ book.price }}</p>
+    <p>______________________________________</p>
+    
+
+</div>
+{% endfor %}
+{% endblock content %}

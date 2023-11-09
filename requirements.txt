@@ -3,4 +3,4 @@ Django
 gunicorn
 psycopg2
 environs
-
+Pillow==9.5.0

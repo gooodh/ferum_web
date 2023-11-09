@@ -76,7 +76,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'  # new
 SITE_ID = 1
 AUTHENTICATION_BACKENDS = (
 'django.contrib.auth.backends.ModelBackend',
-'allauth.account.auth_backends.AuthenticationBackend',  # new
+# 'allauth.account.auth_backends.AuthenticationBackend',  # new
 )
 ACCOUNT_SESSION_REMEMBER = True # new
 ACCOUNT_USERNAME_REQUIRED = False # new
