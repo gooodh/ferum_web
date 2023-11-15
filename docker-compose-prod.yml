@@ -1,0 +1,46 @@
+version: '3.9'
+
+services:
+    db_ferum:
+        image: postgres:15
+        container_name: db_ferum
+        volumes:
+            - ~/.pg/postgres_data/ferum:/var/lib/postgresql/data/
+        env_file:
+            - .env
+        restart: always
+    web:
+        build: .
+        container_name: "django"
+        # command: python /book/manage.py runserver 0.0.0.0:8000
+        command: gunicorn config.wsgi -b 0.0.0.0:8000 # new
+        volumes:
+        - static_volume:/book/staticfiles
+        - media_volume:/book/media
+        ports:
+            - 8000:8000
+        depends_on:
+            - db_ferum
+
+        env_file:
+            - .env
+        restart: always
+    nginx:
+        build: 
+            dockerfile: ./Dockerfile
+            context: ./docker/nginx
+        container_name: "nginx"
+        volumes:
+        - static_volume:/book/staticfiles
+        - media_volume:/book/media
+
+        depends_on:
+            - web
+        ports:
+            - 80:80
+        restart: always
+
+volumes:
+    static_volume:
+    media_volume:
+

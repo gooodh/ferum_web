@@ -1,17 +1,31 @@
 
-{% block title %}Search{% endblock title %}
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ferum</title>
+
+    <link rel="stylesheet" href="{% static 'css/tooplate-style.css'%}">
+</head>
+<body>
 {% block content %}
 <h1>Работы Ferum</h1>
 {% for book in gallery_list %}
-<div>
+<div class="small-text">
     {% if book.cover %}
     <img class="bookcover" src="{{ book.cover.url}}" width="300px" >
     {% endif %}
     <p>Author: {{ book.author }}</p>
     <p>Price: $ {{ book.price }}</p>
-    <p>______________________________________</p>
+    <hr>
     
 
 </div>
+
+</body>
 {% endfor %}
 {% endblock content %}
